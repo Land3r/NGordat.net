@@ -83,9 +83,10 @@
 
 <script>
 import { openURL } from 'quasar'
+import { mapState } from 'vuex'
 
 export default {
-  name: 'MyLayout',
+  name: 'MainLayout',
   data () {
     return {
       leftDrawerOpen: this.$q.platform.is.desktop
@@ -93,6 +94,18 @@ export default {
   },
   methods: {
     openURL
+  },
+  computed: {
+    ...mapState('application', [
+      'user',
+      'token'
+    ])
+  },
+  created: function () {
+    // Redirect user to login page if not authenticated.
+    if (this.user == null || this.token == null) {
+      this.$router.push('/login')
+    }
   }
 }
 </script>

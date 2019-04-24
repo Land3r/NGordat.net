@@ -17,6 +17,7 @@
 import AppTransition from 'components/common/presentation/Transition'
 
 import LoginForm from 'components/form/login/LoginForm'
+import AuthService from 'services/AuthService'
 
 export default {
   name: 'PageLogin',
@@ -25,8 +26,10 @@ export default {
     'app-loginform': LoginForm
   },
   methods: {
-    doLogin: function () {
-      // TODO
+    doLogin: function (username, password) {
+      const service = new AuthService()
+      const response = service.doLogin(username, password)
+      console.log(response)
     }
   }
 }

@@ -113,6 +113,7 @@ module.exports = function (ctx) {
           'layouts': path.resolve(__dirname, 'src/layouts'),
           'pages': path.resolve(__dirname, 'src/pages'),
           'router': path.resolve(__dirname, 'src/router'),
+          'services': path.resolve(__dirname, 'src/services'),
           'store': path.resolve(__dirname, 'src/store')
         }
       }

@@ -108,7 +108,7 @@ export default {
   },
   methods: {
     loginBtnClk: function () {
-      this.onLoginBtnClk()
+      this.onLoginBtnClk(this.form.username, this.form.password)
     },
     createAccountBtnClk: function () {
       this.onCreateAccountBtnClk()
