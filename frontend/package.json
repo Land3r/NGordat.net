@@ -1,0 +1,44 @@
+{
+  "name": "ngordatnet",
+  "version": "0.0.1",
+  "description": "A Quasar Framework app",
+  "productName": "NGordat.net",
+  "cordovaId": "org.cordova.quasar.app",
+  "author": "Nicolas Gordat <nicolas.gordat@some-email-provider.com>",
+  "private": true,
+  "scripts": {
+    "lint": "eslint --ext .js,.vue src",
+    "test": "echo \"No test specified\" && exit 0",
+    "start": "quasar dev"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "axios": "^0.18.0",
+    "quasar": "^1.0.0-beta.0",
+    "quasar-dotenv": "^1.0.4",
+    "vue-i18n": "^7.3.3",
+    "vuelidate": "^0.7.4"
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@quasar/app": "^1.0.0-beta.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "strip-ansi": "=3.0.1"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "last 1 version, not dead, ie >= 11"
+  ],
+  "resolutions": {
+    "ajv": "6.8.1"
+  }
+}
