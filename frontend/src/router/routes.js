@@ -33,13 +33,13 @@ const routes = [
     ]
   },
   {
-    path: '/forgotpassword',
+    path: '/lostpassword',
     component: () => import('layouts/EmptyLayout.vue'),
     children: [
       {
         path: '',
-        name: 'forgotpasswordpage',
-        component: () => import('pages/NotLoggedIn/ForgotPassword.vue')
+        name: 'lostpasswordpage',
+        component: () => import('pages/NotLoggedIn/LostPassword.vue')
       }
     ]
   }

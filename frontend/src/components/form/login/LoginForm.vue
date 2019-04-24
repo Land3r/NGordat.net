@@ -1,5 +1,5 @@
 <template>
-  <q-card style="min-width: 35vw">
+  <q-card style="min-width: 25vw">
     <q-card-section>
       <div>
         <app-input
@@ -35,9 +35,9 @@
         </q-btn>
       </div>
     </q-card-actions>
-    <div>
+    <div class="q-px-md">
       <app-horizontalrule>
-        OR
+        {{$t('loginform.section.or')}}
       </app-horizontalrule>
     </div>
     <q-card-actions>
@@ -80,7 +80,7 @@ export default {
       type: Function,
       required: true
     },
-    onForgotPasswordBtnClk: {
+    onLostPasswordBtnClk: {
       type: Function,
       required: true
     }
@@ -114,7 +114,7 @@ export default {
       this.onCreateAccountBtnClk()
     },
     forgotPasswordBtnClk: function () {
-      this.onForgotPasswordBtnClk()
+      this.onLostPasswordBtnClk()
     }
   },
   computed: {

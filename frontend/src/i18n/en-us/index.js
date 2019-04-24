@@ -30,7 +30,7 @@ export default {
       password: 'Password field should be filled.'
     }
   },
-  forgotpasswordform: {
+  lostpasswordform: {
     fillusernameofemail: 'Please fill in your username or email',
     section: {
       or: 'OR'

@@ -4,7 +4,7 @@
       <app-loginform
         :onLoginBtnClk="doLogin"
         :onCreateAccountBtnClk="() => { $router.push('/createaccount') }"
-        :onForgotPasswordBtnClk="() => { $router.push('/forgotpassword') }"
+        :onLostPasswordBtnClk="() => { $router.push('/lostpassword') }"
       />
     </app-transition>
   </q-page>

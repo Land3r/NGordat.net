@@ -1,32 +1,32 @@
  <template>
-  <q-card style="min-width: 35vw">
+  <q-card style="min-width: 25vw">
     <q-card-section>
-      <p>{{$t('forgotpasswordform.fillusernameofemail')}}</p>
+      <p>{{$t('lostpasswordform.fillusernameofemail')}}</p>
     </q-card-section>
     <q-card-section>
       <div>
         <app-input
           i18n
-          label="forgotpasswordform.lbl.username"
+          label="lostpasswordform.lbl.username"
           icon="perm_identity"
           :validation="validations.username"
-          errormessage="forgotpasswordform.error.username"
+          errormessage="lostpasswordform.error.username"
           v-on:value_changed="(value) => {this.form.username = value}"
           v-on:value_valid="(value) => {this.valid.username = value}"
         />
       </div>
       <div>
         <app-horizontalrule>
-          OR
+          {{$t('lostpasswordform.section.or')}}
         </app-horizontalrule>
       </div>
       <div>
         <app-input
           i18n
-          label="forgotpasswordform.lbl.email"
+          label="lostpasswordform.lbl.email"
           icon="alternate_email"
           :validation="validations.email"
-          errormessage="forgotpasswordform.error.email"
+          errormessage="lostpasswordform.error.email"
           v-on:value_changed="(value) => {this.form.email = value}"
           v-on:value_valid="(value) => {this.valid.email = value}"
         />
@@ -40,7 +40,7 @@
           @click="sendEmailBtnClk"
           :disable="!this.isValid"
         >
-          {{$t('forgotpasswordform.btn.sendemail')}}
+          {{$t('lostpasswordform.btn.sendemail')}}
         </q-btn>
       </div>
       <div class="col-6 q-px-xs">
@@ -62,7 +62,7 @@ import AppHorizontalRule from 'components/common/presentation/HorizontalRule'
 import AppInput from 'components/common/form/Input'
 
 export default {
-  name: 'ForgotPasswordForm',
+  name: 'LostPasswordForm',
   props: {
     onSendEmailBtnClk: {
       type: Function,
@@ -95,8 +95,17 @@ export default {
   },
   methods: {
     sendEmailBtnClk: function () {
-      // TODO: Check if valid
-      this.sendEmailBtnClk()
+      if (this.form.email !== '') {
+        const identity = {
+          email: this.form.email
+        }
+        this.onSendEmailBtnClk(identity)
+      } else if (this.form.username !== '') {
+        const identity = {
+          username: this.form.username
+        }
+        this.onSendEmailBtnClk(identity)
+      }
     },
     cancelBtnClk: function () {
       this.onCancelBtnClk()
