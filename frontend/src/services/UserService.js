@@ -4,8 +4,7 @@ import { API, getApiEndpoint } from 'data/backend'
 
 const endpoints = {
   'DEFAULT': '/',
-  'FORGOTPASSWORD': '/forgot_password',
-  'CREATE': '/create'
+  'FORGOTPASSWORD': '/forgot_password'
 }
 
 /**
@@ -30,7 +29,7 @@ export default class UserService {
         return handleResponse(response)
       })
       .catch(function (error) {
-        handleError(error)
+        return handleError(error)
       })
   }
 
@@ -52,16 +51,18 @@ export default class UserService {
         return handleResponse(response)
       })
       .catch(function (error) {
-        handleError(error)
+        return handleError(error)
       })
   }
 
   create (user) {
     const requestOptions = {
       method: 'post',
-      url: getApiEndpoint(API.USER + endpoints.CREATE),
+      url: getApiEndpoint(API.USER + endpoints.DEFAULT),
       data: {
         username: user.username,
+        firstname: user.firstname,
+        lastname: user.lastname,
         email: user.email,
         password: user.password
       }
@@ -72,7 +73,7 @@ export default class UserService {
         return handleResponse(response)
       })
       .catch(function (error) {
-        handleError(error)
+        return handleError(error)
       })
   }
 }

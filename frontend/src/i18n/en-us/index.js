@@ -57,6 +57,8 @@ export default {
     },
     lbl: {
       username: 'Username',
+      firstname: 'Firstname',
+      lastname: 'Lastname',
       email: 'Email',
       email2: 'Please re-type your email',
       password: 'Password',
@@ -64,10 +66,28 @@ export default {
     },
     error: {
       username: 'Username field should be filled.',
+      firstname: 'Firstname field should be filled.',
+      lastname: 'Lastname field should be filled.',
       email: 'Email field should be a valid email.',
       email2: 'Email field should be a valid email and match the previous email filled.',
       password: 'Password field should be filled.',
       password2: 'Password field should be filled and match the previous password filled.'
+    }
+  },
+  loginpage: {
+    error: {
+      loginfailure: 'Your credentials are not valid !'
+    },
+    success: {
+      loginsuccess: 'You are now logged in.'
+    }
+  },
+  createaccountpage: {
+    error: {
+      createfailure: 'Account creation failed.'
+    },
+    success: {
+      createsuccess: 'Account created ! Check your emails to activate your account.'
     }
   }
 }

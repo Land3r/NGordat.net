@@ -30,7 +30,7 @@ export default class AuthService {
         return handleResponse(response)
       })
       .catch(function (error) {
-        handleError(error)
+        return handleError(error)
       })
   }
 }

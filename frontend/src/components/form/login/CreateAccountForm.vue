@@ -17,6 +17,30 @@
           v-on:value_valid="(value) => {this.valid.username = value}"
         />
       </div>
+      <div class="row">
+        <div class="col q-pr-xs">
+          <app-input
+            i18n
+            label="createaccountform.lbl.firstname"
+            icon="perm_identity"
+            :validation="validations.firstname"
+            errormessage="createaccountform.error.firstname"
+            v-on:value_changed="(value) => {this.form.firstname = value}"
+            v-on:value_valid="(value) => {this.valid.firstname = value}"
+          />
+        </div>
+        <div class="col q-pl-xs">
+          <app-input
+            i18n
+            label="createaccountform.lbl.lastname"
+            icon="perm_identity"
+            :validation="validations.lastname"
+            errormessage="createaccountform.error.lastname"
+            v-on:value_changed="(value) => {this.form.lastname = value}"
+            v-on:value_valid="(value) => {this.valid.lastname = value}"
+          />
+        </div>
+      </div>
       <div>
         <app-input
           i18n
@@ -27,7 +51,7 @@
           v-on:value_changed="(value) => {this.form.email = value}"
           v-on:value_valid="(value) => {
               if (value === true) {
-                if (this.valid.email2 && this.form.email == this.form.email2) {
+                if (this.valid.email2 && this.form.email === this.form.email2) {
                   this.valid.email = value
                 } else {
                   this.valid.email = false
@@ -48,7 +72,7 @@
           v-on:value_changed="(value) => {this.form.email2 = value}"
           v-on:value_valid="(value) => {
               if (value === true) {
-                if (this.valid.email && this.form.email == this.form.email2) {
+                if (this.valid.email && this.form.email === this.form.email2) {
                   this.valid.email2 = value
                 } else {
                   this.valid.email2 = false
@@ -73,7 +97,7 @@
           v-on:value_changed="(value) => {this.form.password = value}"
           v-on:value_valid="(value) => {
               if (value === true) {
-                if (this.valid.password2 && this.form.password == this.form.password2) {
+                if (this.valid.password2 && this.form.password === this.form.password2) {
                   this.valid.password = value
                 } else {
                   this.valid.password = false
@@ -93,10 +117,10 @@
           v-on:value_changed="(value) => {this.form.password2 = value}"
           v-on:value_valid="(value) => {
               if (value === true) {
-                if (this.valid.password && this.form.password == this.form.password2) {
+                if (this.valid.password && this.form.password === this.form.password2) {
                   this.valid.password2 = value
                 } else {
-                  this.valid.password22 = false
+                  this.valid.password2 = false
                 }
               } else if (value === false) {
                 this.valid.password2 = value
@@ -156,6 +180,8 @@ export default {
     return {
       form: {
         username: '',
+        firstname: '',
+        lastname: '',
         email: '',
         email2: '',
         password: '',
@@ -163,11 +189,15 @@ export default {
       },
       validations: {
         username: { required },
+        firstname: { required },
+        lastname: { required },
         email: { required, email },
         password: { required }
       },
       valid: {
         username: false,
+        firstname: false,
+        lastname: false,
         email: false,
         email2: false,
         password: false,
@@ -179,6 +209,8 @@ export default {
     createAccountBtnClk: function () {
       const user = {
         username: this.form.username,
+        firstname: this.form.firstname,
+        lastname: this.form.lastname,
         email: this.form.email,
         password: this.form.password
       }
@@ -190,7 +222,7 @@ export default {
   },
   computed: {
     isValid: function () {
-      return this.valid.username && this.valid.email && this.valid.email2 && this.valid.password && this.valid.password2
+      return this.valid.username && this.valid.firstname && this.valid.lastname && this.valid.email && this.valid.email2 && this.valid.password && this.valid.password2
     }
   }
 }

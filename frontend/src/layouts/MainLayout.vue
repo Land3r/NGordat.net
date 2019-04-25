@@ -13,7 +13,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          {{title}}
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -83,7 +83,7 @@
 
 <script>
 import { openURL } from 'quasar'
-import { mapState } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'MainLayout',
@@ -93,17 +93,23 @@ export default {
     }
   },
   methods: {
-    openURL
+    openURL,
+    ...mapActions('application', [
+      'setRedirectTo'
+    ])
   },
   computed: {
-    ...mapState('application', [
-      'user',
-      'token'
+    title: function () {
+      return process.env.WEBSITE_NAME
+    },
+    ...mapGetters('application', [
+      'isLoggedIn'
     ])
   },
   created: function () {
-    // Redirect user to login page if not authenticated.
-    if (this.user == null || this.token == null) {
+    // Redirect user to login page if not authenticated and store current route to redirect after login.
+    if (!this.isLoggedIn) {
+      this.setRedirectTo(this.$route.fullPath)
       this.$router.push('/login')
     }
   }

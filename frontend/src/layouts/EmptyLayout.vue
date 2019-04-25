@@ -6,7 +6,7 @@
           <q-avatar>
             <img src="https://cdn.quasar-framework.org/logo/svg/quasar-logo.svg">
           </q-avatar>
-          Title
+          {{title}}
         </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { mapGetters, mapActions, mapState } from 'vuex'
+
 export default {
   name: 'EmptyLayout',
   data () {
@@ -26,6 +28,32 @@ export default {
     }
   },
   methods: {
+    ...mapActions('application', [
+      'unsetRedirectTo'
+    ])
+  },
+  computed: {
+    title: function () {
+      return process.env.WEBSITE_NAME
+    },
+    ...mapState('application', [
+      'redirectTo'
+    ]),
+    ...mapGetters('application', [
+      'isLoggedIn',
+      'shouldBeRedirected'
+    ])
+  },
+  created: function () {
+    // If user is already logged in, redirect him.
+    if (this.isLoggedIn) {
+      if (this.shouldBeRedirected) {
+        this.$router.push(this.redirectTo)
+        this.unsetRedirectTo()
+      } else {
+        this.$router.push('/')
+      }
+    }
   }
 }
 </script>
