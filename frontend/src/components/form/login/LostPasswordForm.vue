@@ -1,6 +1,9 @@
  <template>
   <q-card style="min-width: 25vw">
     <q-card-section>
+      <img src="statics/icons/icon-128x128.png" class="q-mx-auto block" />
+    </q-card-section>
+    <q-card-section>
       <p>{{$t('lostpasswordform.fillusernameofemail')}}</p>
     </q-card-section>
     <q-card-section>

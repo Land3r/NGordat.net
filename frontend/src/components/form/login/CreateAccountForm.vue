@@ -1,6 +1,9 @@
 <template>
   <q-card style="min-width: 35vw">
     <q-card-section>
+      <img src="statics/icons/icon-128x128.png" class="q-mx-auto block" />
+    </q-card-section>
+    <q-card-section>
       <div>
         <app-horizontalrule>
           {{$t('createaccountform.section.identity')}}
@@ -49,17 +52,7 @@
           :validation="validations.email"
           errormessage="createaccountform.error.email"
           v-on:value_changed="(value) => {this.form.email = value}"
-          v-on:value_valid="(value) => {
-              if (value === true) {
-                if (this.valid.email2 && this.form.email === this.form.email2) {
-                  this.valid.email = value
-                } else {
-                  this.valid.email = false
-                }
-              } else if (value === false) {
-                this.valid.email = value
-              }
-            }"
+          v-on:value_valid="(value) => {this.valid.email = value}"
         />
       </div>
       <div>
@@ -70,17 +63,7 @@
           :validation="validations.email"
           errormessage="createaccountform.error.email2"
           v-on:value_changed="(value) => {this.form.email2 = value}"
-          v-on:value_valid="(value) => {
-              if (value === true) {
-                if (this.valid.email && this.form.email === this.form.email2) {
-                  this.valid.email2 = value
-                } else {
-                  this.valid.email2 = false
-                }
-              } else if (value === false) {
-                this.valid.email2 = value
-              }
-            }"
+          v-on:value_valid="(value) => {this.valid.email2 = value}"
         />
       </div>
       <div>
@@ -95,17 +78,7 @@
           :validation="validations.password"
           errormessage="createaccountform.error.password"
           v-on:value_changed="(value) => {this.form.password = value}"
-          v-on:value_valid="(value) => {
-              if (value === true) {
-                if (this.valid.password2 && this.form.password === this.form.password2) {
-                  this.valid.password = value
-                } else {
-                  this.valid.password = false
-                }
-              } else if (value === false) {
-                this.valid.password = value
-              }
-            }"
+          v-on:value_valid="(value) => {this.valid.password = value}"
         />
       </div>
       <div>
@@ -115,17 +88,7 @@
           :validation="validations.password"
           errormessage="createaccountform.error.password2"
           v-on:value_changed="(value) => {this.form.password2 = value}"
-          v-on:value_valid="(value) => {
-              if (value === true) {
-                if (this.valid.password && this.form.password === this.form.password2) {
-                  this.valid.password2 = value
-                } else {
-                  this.valid.password2 = false
-                }
-              } else if (value === false) {
-                this.valid.password2 = value
-              }
-            }"
+          v-on:value_valid="(value) => {this.valid.password2 = value}"
         />
       </div>
     </q-card-section>
@@ -222,7 +185,8 @@ export default {
   },
   computed: {
     isValid: function () {
-      return this.valid.username && this.valid.firstname && this.valid.lastname && this.valid.email && this.valid.email2 && this.valid.password && this.valid.password2
+      return this.valid.username && this.valid.firstname && this.valid.lastname && this.valid.email && this.valid.email2 && this.valid.password && this.valid.password2 &&
+        this.form.email === this.form.email2 && this.form.password === this.form.password2
     }
   }
 }

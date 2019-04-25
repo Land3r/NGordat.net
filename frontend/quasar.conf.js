@@ -1,5 +1,4 @@
 // Configuration for your app
-// const env = require('quasar-dotenv').config()
 let path = require('path')
 
 module.exports = function (ctx) {
@@ -89,7 +88,6 @@ module.exports = function (ctx) {
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
-      // env: env, // dotenv using quasar-dotenv
       extendWebpack (cfg) {
         // Adds eslint to webpack build.
         cfg.module.rules.push({
