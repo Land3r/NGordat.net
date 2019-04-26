@@ -1,42 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ngordat.net.backend.domains.Users
+﻿namespace ngordat.net.backend.domains.Users
 {
+  using MongoDB.Bson;
+  using MongoDB.Bson.Serialization.Attributes;
+
+  /// <summary>
+  /// A user of the application
+  /// </summary>
+  public class User
+  {
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
     /// <summary>
-    /// A user of the application
+    /// Gets or sets the id of the <see cref="User"/>.
     /// </summary>
-    public class User
-    {
-        /// <summary>
-        /// Gets or sets the id of the <see cref="User"/>.
-        /// </summary>
-        public int Id { get; set; }
+    public string Id { get; set; }
 
-        /// <summary>
-        /// Gets or sets the firstname of the <see cref="User"/>.
-        /// </summary>
-        public string Firstname { get; set; }
+    [BsonElement("firstname")]
+    /// <summary>
+    /// Gets or sets the firstname of the <see cref="User"/>.
+    /// </summary>
+    public string Firstname { get; set; }
 
-        /// <summary>
-        /// Gets or sets the lastname of the <see cref="User"/>.
-        /// </summary>
-        public string Lastname { get; set; }
+    [BsonElement("lastname")]
+    /// <summary>
+    /// Gets or sets the lastname of the <see cref="User"/>.
+    /// </summary>
+    public string Lastname { get; set; }
 
-        /// <summary>
-        /// Gets or sets the username of the <see cref="User"/>.
-        /// </summary>
-        public string Username { get; set; }
+    [BsonElement("username")]
+    /// <summary>
+    /// Gets or sets the username of the <see cref="User"/>.
+    /// </summary>
+    public string Username { get; set; }
 
-        /// <summary>
-        /// Gets or sets the password of the <see cref="User"/>.
-        /// </summary>
-        public string Password { get; set; }
+    [BsonElement("email")]
+    /// <summary>
+    /// Gets or sets the email of the <see cref="User"/>
+    /// </summary>
+    public string Email { get; set; }
 
-        /// <summary>
-        /// Gets or sets the token of the <see cref="User"/>.
-        /// </summary>
-        public string Token { get; set; }
-    }
+    [BsonElement("password")]
+    /// <summary>
+    /// Gets or sets the password of the <see cref="User"/>.
+    /// </summary>
+    public string Password { get; set; }
+
+    /// <summary>
+    /// Gets or sets the token of the <see cref="User"/>.
+    /// </summary>
+    public string Token { get; set; }
+  }
 }

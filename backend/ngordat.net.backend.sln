@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 - WebAPI", "01 - WebAPI", "{1580E142-C10D-45C6-B5B9-808956379FA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngordat.net.backend.api", "ngordat.net.backend.api\ngordat.net.backend.api.csproj", "{79D1A7E7-83CF-46BA-A3E6-DAC5F3CBE8EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ngordat.net.backend.api", "ngordat.net.backend.api\ngordat.net.backend.api.csproj", "{79D1A7E7-83CF-46BA-A3E6-DAC5F3CBE8EB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Services", "02 - Services", "{48D87264-4AC3-4738-85DA-ADC9D22B08EA}"
 EndProject
@@ -13,9 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domains", "03 - Domain
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Transversal", "04 - Transversal", "{98D0B3FE-C1EE-4EA1-98B0-8CBE787ED346}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngordat.net.backend.services", "ngordat.net.backend.services\ngordat.net.backend.services.csproj", "{D7B95861-058A-4138-BB09-02237ECBFDEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ngordat.net.backend.services", "ngordat.net.backend.services\ngordat.net.backend.services.csproj", "{D7B95861-058A-4138-BB09-02237ECBFDEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngordat.net.backend.domains", "ngordat.net.backend.domains\ngordat.net.backend.domains.csproj", "{5348C488-0D1D-4FC3-93B8-99F3E090F115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ngordat.net.backend.domains", "ngordat.net.backend.domains\ngordat.net.backend.domains.csproj", "{5348C488-0D1D-4FC3-93B8-99F3E090F115}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ngordat.net.backend.transversal", "ngordat.net.backend.transversal\ngordat.net.backend.transversal.csproj", "{AA232613-9366-4321-A9DA-BB4983152A3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{5348C488-0D1D-4FC3-93B8-99F3E090F115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5348C488-0D1D-4FC3-93B8-99F3E090F115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5348C488-0D1D-4FC3-93B8-99F3E090F115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA232613-9366-4321-A9DA-BB4983152A3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA232613-9366-4321-A9DA-BB4983152A3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA232613-9366-4321-A9DA-BB4983152A3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA232613-9366-4321-A9DA-BB4983152A3B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +49,7 @@ Global
 		{79D1A7E7-83CF-46BA-A3E6-DAC5F3CBE8EB} = {1580E142-C10D-45C6-B5B9-808956379FA3}
 		{D7B95861-058A-4138-BB09-02237ECBFDEF} = {48D87264-4AC3-4738-85DA-ADC9D22B08EA}
 		{5348C488-0D1D-4FC3-93B8-99F3E090F115} = {3648FAEF-D487-43C5-A64E-647FB8FFEA66}
+		{AA232613-9366-4321-A9DA-BB4983152A3B} = {98D0B3FE-C1EE-4EA1-98B0-8CBE787ED346}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BCAA0BD4-0D4E-4F4F-85A4-D2064915B1F6}
