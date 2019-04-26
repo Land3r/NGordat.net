@@ -17,6 +17,30 @@
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <q-btn>
+            <q-avatar>
+              <q-icon name="perm_identity" />
+            </q-avatar>
+            <q-menu
+              transition-show="jump-down"
+              transition-hide="jump-up"
+            >
+              <q-list style="min-width: 100px">
+                <q-item clickable>
+                  <q-item-section>Having fun</q-item-section>
+                </q-item>
+                <q-item clickable>
+                  <q-item-section>Crazy for transitions</q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item clickable>
+                  <q-item-section>Mind blown</q-item-section>
+                </q-item>
+              </q-list>
+            </q-menu>
+          </q-btn>
+        </div>
       </q-toolbar>
     </q-header>
 
