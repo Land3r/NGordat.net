@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using ngordat.net.backend.api.Services;
-using ngordat.net.backend.domains.Users;
-using ngordat.net.backend.services.Users;
-
-namespace ngordat.net.backend.api.Controllers
+﻿namespace ngordat.net.backend.api.Controllers.Users
 {
+  using Microsoft.AspNetCore.Authorization;
+  using Microsoft.AspNetCore.Mvc;
+  using ngordat.net.backend.api.Services.Users;
+  using ngordat.net.backend.domains.Users;
+  using ngordat.net.backend.services.Users;
+
   /// <summary>
   /// Authentication controller api.
   /// </summary>
   [Authorize]
   [ApiController]
-  [Route("api/[controller]")]
+  [Route("api/auth")]
   public class AuthController : ControllerBase
   {
     /// <summary>

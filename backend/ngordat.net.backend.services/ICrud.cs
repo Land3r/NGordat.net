@@ -1,9 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ngordat.net.backend.services
+﻿namespace ngordat.net.backend.services
 {
+  using System.Collections.Generic;
+
+  /// <summary>
+  /// ICrud interface.
+  /// </summary>
+  /// <typeparam name="T"></typeparam>
   public interface ICrud<T>
   {
     /// <summary>

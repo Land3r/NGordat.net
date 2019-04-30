@@ -1,7 +1,10 @@
-﻿using ngordat.net.backend.domains.Users;
-
-namespace ngordat.net.backend.services.Users
+﻿namespace ngordat.net.backend.services.Users
 {
+  using ngordat.net.backend.domains.Users;
+
+  /// <summary>
+  /// IUserService interface.
+  /// </summary>
   public interface IUserService : ICrud<User>
   {
     /// <summary>

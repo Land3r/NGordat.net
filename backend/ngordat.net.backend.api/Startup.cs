@@ -1,18 +1,18 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using ngordat.net.backend.api.Services;
-using ngordat.net.backend.api.Settings;
-using ngordat.net.backend.services.Users;
-using ngordat.net.backend.transversal.Settings;
-using System.Text;
-
-namespace ngordat.net.backend.api
+﻿namespace ngordat.net.backend.api
 {
+  using Microsoft.AspNetCore.Authentication.JwtBearer;
+  using Microsoft.AspNetCore.Builder;
+  using Microsoft.AspNetCore.Hosting;
+  using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Configuration;
+  using Microsoft.Extensions.DependencyInjection;
+  using Microsoft.IdentityModel.Tokens;
+  using ngordat.net.backend.api.Services.Users;
+  using ngordat.net.backend.api.Settings;
+  using ngordat.net.backend.services.Users;
+  using ngordat.net.backend.transversal.Settings;
+  using System.Text;
+
   /// <summary>
   /// Application startup class.
   /// </summary>
@@ -72,6 +72,8 @@ namespace ngordat.net.backend.api
       // Configure DI for application services.
       services.AddScoped<IUserService, UserService>();
       services.AddScoped<IAuthService, AuthService>();
+      services.AddScoped<IUserGroupService, UserGroupService>();
+      services.AddScoped<IAuthorizationService, AuthorizationService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,7 +11,7 @@
   using System.Text;
 
   /// <summary>
-  /// User Service class.
+  /// UserService class.
   /// </summary>
   public class UserService : IUserService
   {
@@ -29,6 +29,7 @@
     /// Initializes a new instance of the <see cref="UserService"/> class.
     /// </summary>
     /// <param name="config">The configuration used.</param>
+    /// <param name="appSettings">The appSettings used.</param>
     public UserService(IConfiguration config, IAppSettings appSettings)
     {
       MongoClient client = new MongoClient(config.GetConnectionString("NgordatnetDb"));

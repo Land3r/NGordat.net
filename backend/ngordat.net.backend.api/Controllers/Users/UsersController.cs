@@ -1,15 +1,14 @@
-﻿namespace ngordat.net.backend.api.Controllers
+﻿namespace ngordat.net.backend.api.Controllers.Users
 {
   using Microsoft.AspNetCore.Authorization;
   using Microsoft.AspNetCore.Mvc;
   using ngordat.net.backend.domains.Users;
   using ngordat.net.backend.services.Users;
-  using System.Collections.Generic;
   using System;
 
   [Authorize]
   [ApiController]
-  [Route("api/[controller]")]
+  [Route("api/users")]
   public class UsersController : ControllerBase
   {
     /// <summary>
@@ -36,7 +35,7 @@
 
     // GET: api/Users/5
     [Authorize]
-    [HttpGet("{id}", Name = "Get")]
+    [HttpGet("{id}")]
     public IActionResult Get(string id)
     {
       return Ok(_userService.Get(id));

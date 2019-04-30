@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ngordat.net.backend.transversal.Settings
+﻿namespace ngordat.net.backend.transversal.Settings
 {
+  /// <summary>
+  /// IAppSettings interface.
+  /// Used to retrieve data from the configuration of the project.
+  /// </summary>
   public interface IAppSettings
   {
     /// <summary>

@@ -2,6 +2,7 @@
 {
   using MongoDB.Bson;
   using MongoDB.Bson.Serialization.Attributes;
+  using System;
 
   /// <summary>
   /// A user of the application
@@ -49,5 +50,17 @@
     /// Gets or sets the token of the <see cref="User"/>.
     /// </summary>
     public string Token { get; set; }
+
+    /// <summary>
+    /// Gets or sets the date of creation of the <see cref="User"/>.
+    /// </summary>
+    [BsonElement("createdAt")]
+    public DateTime CreatedAt { get; set; }
+
+    /// <summary>
+    /// Gets or sets whether or not the <see cref="User"/> went through the email verification process.
+    /// </summary>
+    [BsonElement("verified")]
+    public bool Verified { get; set; }
   }
 }

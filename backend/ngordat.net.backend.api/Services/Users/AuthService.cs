@@ -1,17 +1,15 @@
-﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using ngordat.net.backend.api.Settings;
-using ngordat.net.backend.domains.Users;
-using ngordat.net.backend.services.Users;
-using ngordat.net.backend.transversal.Settings;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
-namespace ngordat.net.backend.api.Services
+﻿namespace ngordat.net.backend.api.Services.Users
 {
+  using Microsoft.Extensions.Options;
+  using Microsoft.IdentityModel.Tokens;
+  using ngordat.net.backend.api.Settings;
+  using ngordat.net.backend.domains.Users;
+  using ngordat.net.backend.services.Users;
+  using System;
+  using System.IdentityModel.Tokens.Jwt;
+  using System.Security.Claims;
+  using System.Text;
+
   /// <summary>
   /// Auth Service class.
   /// </summary>
@@ -45,6 +43,7 @@ namespace ngordat.net.backend.api.Services
     /// <param name="username"></param>
     /// <param name="password"></param>
     /// <returns></returns>
+    /// 
     public User Authenticate(string username, string password)
     {
       var user = _userService.Get(username, password);

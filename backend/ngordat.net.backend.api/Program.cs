@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-
-namespace ngordat.net.backend.api
+﻿namespace ngordat.net.backend.api
 {
+  using Microsoft.AspNetCore;
+  using Microsoft.AspNetCore.Hosting;
+
   /// <summary>
   /// Program class.
   /// Application entry point.
@@ -22,7 +22,7 @@ namespace ngordat.net.backend.api
     /// Creates a web host builder and configure it.
     /// </summary>
     /// <param name="args">The args passed to the application.</param>
-    /// <returns></returns>
+    /// <returns>Thz <see cref="IWebHostBuilder"/> used to create the web hosts.</returns>
     public static IWebHostBuilder CreateWebHostBuilder(string[] args)
     {
       return WebHost.CreateDefaultBuilder(args)
