@@ -2,6 +2,9 @@
 {
   using Microsoft.AspNetCore;
   using Microsoft.AspNetCore.Hosting;
+  using Microsoft.Extensions.Logging;
+  using NLog.Web;
+  using System;
 
   /// <summary>
   /// Program class.
@@ -15,7 +18,22 @@
     /// <param name="args">The args passed to the application.</param>
     public static void Main(string[] args)
     {
-      CreateWebHostBuilder(args).Build().Run();
+      // Setup logger
+      var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+      try
+      {
+        logger.Debug("Started program " + AppDomain.CurrentDomain.FriendlyName);
+        CreateWebHostBuilder(args).Build().Run();
+      }
+      catch (Exception ex)
+      {
+        logger.Error(ex, "Stopped program because of exception");
+        throw;
+      }
+      finally
+      {
+        NLog.LogManager.Shutdown();
+      }
     }
 
     /// <summary>
@@ -26,7 +44,13 @@
     public static IWebHostBuilder CreateWebHostBuilder(string[] args)
     {
       return WebHost.CreateDefaultBuilder(args)
-        .UseStartup<Startup>();
+        .UseStartup<Startup>()
+        .ConfigureLogging(logging =>
+        {
+          logging.ClearProviders();
+          logging.SetMinimumLevel(LogLevel.Trace);
+        })
+        .UseNLog();
     }
   }
 }
