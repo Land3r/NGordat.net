@@ -32,7 +32,7 @@
     }
 
     /// <summary>
-    /// Logs an object
+    /// Logs an object.
     /// </summary>
     /// <param name="obj">The object to log.</param>
     /// <param name="level">(Optional) The log criticity.</param>

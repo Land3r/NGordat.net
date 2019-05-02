@@ -1,4 +1,4 @@
-﻿namespace ngordat.net.backend.domains.Mixins
+﻿namespace ngordat.net.backend.domains
 {
   using MongoDB.Bson.Serialization.Attributes;
   using System;

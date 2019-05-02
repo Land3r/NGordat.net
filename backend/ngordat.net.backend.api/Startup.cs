@@ -12,6 +12,7 @@
   using ngordat.net.backend.services.Bookmarks;
   using ngordat.net.backend.services.Users;
   using ngordat.net.backend.transversal.Settings;
+  using System;
   using System.Text;
 
   /// <summary>
@@ -41,6 +42,17 @@
 
       // Asp.Net Core 2.2 MVC Application.
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+      // Configure cache mechanism (for sessions).
+      services.AddDistributedMemoryCache();
+
+      // Enable sessions
+      services.AddSession(options =>
+      {
+        options.IdleTimeout = TimeSpan.FromHours(2);
+        options.Cookie.HttpOnly = false;
+        options.Cookie.IsEssential = true;
+      });
 
       // Configure strongly typed settings objects.
       IConfigurationSection appSettingsSection = Configuration.GetSection("AppSettings");
@@ -99,6 +111,9 @@
           .AllowAnyHeader()
       );
 
+      // Add sessions
+      app.UseSession();
+      
       // Application require Authentication.
       app.UseAuthentication();
 
