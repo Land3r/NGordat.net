@@ -2,10 +2,10 @@
 {
   using Microsoft.AspNetCore.Authorization;
   using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Logging;
   using ngordat.net.backend.domains;
   using ngordat.net.backend.services.Users;
   using System;
-  using System.Collections.Generic;
 
   /// <summary>
   /// The <see cref="UserGroup"/> API.
@@ -13,7 +13,7 @@
   [Authorize]
   [ApiController]
   [Route("api/usergroups")]
-  public class UserGroupsController : ControllerBase
+  public class UserGroupsController : LoggedController<UserGroupsController>
   {
     /// <summary>
     /// The UserGroup service.
@@ -23,8 +23,9 @@
     /// <summary>
     /// Initializes a new instance of the <see cref="UserGroupsController"/> class.
     /// </summary>
+    /// <param name="logger">The logger used.</param>
     /// <param name="userGroupService">The <see cref="IUserGroupService"/> used.</param>
-    public UserGroupsController(IUserGroupService userGroupService)
+    public UserGroupsController(ILogger<UserGroupsController> logger, IUserGroupService userGroupService) : base(logger)
     {
       _userGroupService = userGroupService;
     }

@@ -1,46 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace ngordat.net.backend.api.Controllers
+﻿namespace ngordat.net.backend.api.Controllers
 {
-  [Route("api/[controller]")]
-  public class LoggedController : Controller
+  using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Logging;
+  using ngordat.net.backend.transversal.Logs;
+  using System.Linq;
+  using System.Reflection;
+  using System.Text;
+
+  /// <summary>
+  /// LoggedController class.
+  /// Used to provide logging mechanics to <see cref="Controller"/>.
+  /// </summary>
+  /// <typeparam name="T"></typeparam>
+  public abstract class LoggedController<T> : ControllerBase
   {
-    // GET: api/<controller>
-    [HttpGet]
-    public IEnumerable<string> Get()
+    /// <summary>
+    /// The instance of the logger used.
+    /// </summary>
+    private readonly ILogger<T> _logger;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="LoggedController{T}"/> class.
+    /// </summary>
+    /// <param name="logger">The <see cref="ILogger"/> used to log.</param>
+    public LoggedController(ILogger<T> logger)
     {
-      return new string[] { "value1", "value2" };
+      _logger = logger;
     }
 
-    // GET api/<controller>/5
-    [HttpGet("{id}")]
-    public string Get(int id)
+    /// <summary>
+    /// Logs the message.
+    /// </summary>
+    /// <param name="level">The log criticity.</param>
+    /// <param name="message">The message to log.</param>
+    /// <param name="args">The args to log.</param>
+    protected void Log(LogLevel level, string message, params string[] args)
     {
-      return "value";
+      _logger.Log(level, message, args);
     }
 
-    // POST api/<controller>
-    [HttpPost]
-    public void Post([FromBody]string value)
+    /// <summary>
+    /// Logs an object
+    /// </summary>
+    /// <param name="obj">The object to log.</param>
+    /// <param name="level">(Optional) The log criticity.</param>
+    protected void LogObject(object obj, LogLevel level = LogLevel.Trace)
     {
-    }
-
-    // PUT api/<controller>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody]string value)
-    {
-    }
-
-    // DELETE api/<controller>/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
+      _logger.Log(level, LogHelper.GetObjectToString(obj));
     }
   }
 }

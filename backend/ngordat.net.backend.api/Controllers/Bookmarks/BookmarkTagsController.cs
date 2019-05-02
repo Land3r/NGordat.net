@@ -2,6 +2,7 @@
 {
   using Microsoft.AspNetCore.Authorization;
   using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Logging;
   using ngordat.net.backend.domains.Bookmarks;
   using ngordat.net.backend.services.Bookmarks;
   using System;
@@ -12,7 +13,7 @@
   [Authorize]
   [ApiController]
   [Route("api/bookmarktags")]
-  public class BookmarkTagsController : ControllerBase
+  public class BookmarkTagsController : LoggedController<BookmarkTagsController>
   {
     /// <summary>
     /// The BookmarkTag service.
@@ -22,8 +23,9 @@
     /// <summary>
     /// Initializes a new instance of the <see cref="BookmarksController"/> class.
     /// </summary>
+    /// <param name="logger">The logger used.</param>
     /// <param name="bookmarkTagService">The <see cref="IBookmarkService"/> used.</param>
-    public BookmarkTagsController(IBookmarkTagService bookmarkTagService)
+    public BookmarkTagsController(ILogger<BookmarkTagsController> logger, IBookmarkTagService bookmarkTagService) : base(logger)
     {
       _bookmarkTagService = bookmarkTagService;
     }

@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Logs\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="nlog.Development.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

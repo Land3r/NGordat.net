@@ -3,6 +3,7 @@
   using Microsoft.AspNetCore;
   using Microsoft.AspNetCore.Hosting;
   using Microsoft.Extensions.Logging;
+  using ngordat.net.backend.api.Settings;
   using NLog.Web;
   using System;
 
@@ -18,13 +19,8 @@
     /// <param name="args">The args passed to the application.</param>
     public static void Main(string[] args)
     {
-      string nlogConfig = string.Empty;
-#if DEBUG
-      nlogConfig = "nlog.Development.config";
-#else
-      nlogConfig = "nlog.Release.config";
-#endif
       // Setup logger
+      string nlogConfig = NLogSettings.NLogConfigFile;
       var logger = NLogBuilder.ConfigureNLog(nlogConfig).GetCurrentClassLogger();
       try
       {

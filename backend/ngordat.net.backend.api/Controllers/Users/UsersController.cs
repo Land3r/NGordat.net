@@ -2,14 +2,18 @@
 {
   using Microsoft.AspNetCore.Authorization;
   using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Logging;
   using ngordat.net.backend.domains.Users;
   using ngordat.net.backend.services.Users;
   using System;
 
+  /// <summary>
+  /// The <see cref="User"/> API.
+  /// </summary>
   [Authorize]
   [ApiController]
   [Route("api/users")]
-  public class UsersController : ControllerBase
+  public class UsersController : LoggedController<UsersController>
   {
     /// <summary>
     /// The User service.
@@ -19,8 +23,9 @@
     /// <summary>
     /// Initializes a new instance of the <see cref="UsersController"/> class.
     /// </summary>
+    /// <param name="logger">The logger used.</param>
     /// <param name="userService">The <see cref="IUserService"/> used.</param>
-    public UsersController(IUserService userService)
+    public UsersController(ILogger<UsersController> logger, IUserService userService) : base(logger)
     {
       _userService = userService;
     }

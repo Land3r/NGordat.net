@@ -2,6 +2,7 @@
 {
   using Microsoft.AspNetCore.Authorization;
   using Microsoft.AspNetCore.Mvc;
+  using Microsoft.Extensions.Logging;
   using ngordat.net.backend.domains.Users;
   using System;
   using IAuthorizationService = services.Users.IAuthorizationService;
@@ -12,7 +13,7 @@
   [Authorize]
   [ApiController]
   [Route("api/authorizations")]
-  public class AuthorizationsController : ControllerBase
+  public class AuthorizationsController : LoggedController<AuthorizationsController>
   {
     /// <summary>
     /// The Authorization service.
@@ -22,8 +23,9 @@
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthorizationsController"/> class.
     /// </summary>
+    /// <param name="logger">The logger used.</param>
     /// <param name="authorizationService">The <see cref="IAuthorizationService"/> used.</param>
-    public AuthorizationsController(IAuthorizationService authorizationService)
+    public AuthorizationsController(ILogger<AuthorizationsController> logger, IAuthorizationService authorizationService) : base(logger)
     {
       _authorizationService = authorizationService;
     }

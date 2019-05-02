@@ -9,6 +9,7 @@
   using Microsoft.IdentityModel.Tokens;
   using ngordat.net.backend.api.Services.Users;
   using ngordat.net.backend.api.Settings;
+  using ngordat.net.backend.services.Bookmarks;
   using ngordat.net.backend.services.Users;
   using ngordat.net.backend.transversal.Settings;
   using System.Text;
@@ -74,6 +75,8 @@
       services.AddScoped<IAuthService, AuthService>();
       services.AddScoped<IUserGroupService, UserGroupService>();
       services.AddScoped<IAuthorizationService, AuthorizationService>();
+      services.AddScoped<IBookmarkService, BookmarkService>();
+      services.AddScoped<IBookmarkTagService, BookmarkTagService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
