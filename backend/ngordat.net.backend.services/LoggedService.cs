@@ -1,26 +1,21 @@
-﻿namespace ngordat.net.backend.api.Controllers
+﻿namespace ngordat.net.backend.services
 {
-  using Microsoft.AspNetCore.Mvc;
   using Microsoft.Extensions.Logging;
   using ngordat.net.backend.transversal.Logs;
 
-  /// <summary>
-  /// LoggedController class.
-  /// Used to provide logging mechanics to <see cref="Controller"/>.
-  /// </summary>
-  /// <typeparam name="T">The type of the <see cref="Logger{T}"/> to instanciate.</typeparam>
-  public abstract class LoggedController<T> : ControllerBase
+  public abstract class LoggedService<T>
   {
     /// <summary>
     /// The instance of the logger used.
     /// </summary>
+    /// <typeparam name="T">The type of the <see cref="Logger{T}"/> to instanciate.</typeparam>
     private readonly ILogger<T> _logger;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="LoggedController{T}"/> class.
+    /// Initializes a new instance of the <see cref="LoggedService{T}"/> class.
     /// </summary>
     /// <param name="logger">The <see cref="ILogger"/> used to log.</param>
-    public LoggedController(ILogger<T> logger)
+    public LoggedService(ILogger<T> logger)
     {
       _logger = logger;
     }

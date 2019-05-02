@@ -1,6 +1,7 @@
 ﻿namespace ngordat.net.backend.services.Users
 {
   using Microsoft.Extensions.Configuration;
+  using Microsoft.Extensions.Logging;
   using MongoDB.Driver;
   using ngordat.net.backend.domains;
   using System.Collections.Generic;
@@ -8,7 +9,7 @@
   /// <summary>
   /// UserGroupService class.
   /// </summary>
-  public class UserGroupService : IUserGroupService
+  public class UserGroupService : LoggedService<UserGroupService>, IUserGroupService
   {
     /// <summary>
     /// The collection of <see cref="Authorization"/> from the database.
@@ -19,8 +20,8 @@
     /// Initializes a new instance of the <see cref="AuthorizationService"/> class.
     /// </summary>
     /// <param name="config">The configuration used.</param>
-    /// <pa
-    public UserGroupService(IConfiguration config)
+    /// <param name="logger">The logger used.</param>
+    public UserGroupService(ILogger<UserGroupService> logger, IConfiguration config) : base(logger)
     {
       MongoClient client = new MongoClient(config.GetConnectionString("NgordatnetDb"));
       IMongoDatabase database = client.GetDatabase("NgordatnetDb");

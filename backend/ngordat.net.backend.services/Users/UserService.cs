@@ -2,6 +2,7 @@
 {
   using Microsoft.AspNetCore.Cryptography.KeyDerivation;
   using Microsoft.Extensions.Configuration;
+  using Microsoft.Extensions.Logging;
   using MongoDB.Driver;
   using ngordat.net.backend.domains.Users;
   using ngordat.net.backend.transversal.Settings;
@@ -13,7 +14,7 @@
   /// <summary>
   /// UserService class.
   /// </summary>
-  public class UserService : IUserService
+  public class UserService : LoggedService<UserService>, IUserService
   {
     /// <summary>
     /// The collection of <see cref="User"/> from the database.
@@ -30,7 +31,8 @@
     /// </summary>
     /// <param name="config">The configuration used.</param>
     /// <param name="appSettings">The appSettings used.</param>
-    public UserService(IConfiguration config, IAppSettings appSettings)
+    /// <param name="logger">The logger used.</param>
+    public UserService(ILogger<UserService> logger, IConfiguration config, IAppSettings appSettings) : base(logger)
     {
       MongoClient client = new MongoClient(config.GetConnectionString("NgordatnetDb"));
       IMongoDatabase database = client.GetDatabase("NgordatnetDb");

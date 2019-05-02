@@ -1,6 +1,7 @@
 ﻿namespace ngordat.net.backend.services.Bookmarks
 {
   using Microsoft.Extensions.Configuration;
+  using Microsoft.Extensions.Logging;
   using MongoDB.Driver;
   using ngordat.net.backend.domains.Bookmarks;
   using System.Collections.Generic;
@@ -8,7 +9,7 @@
   /// <summary>
   /// BookmarkTagService class.
   /// </summary>
-  public class BookmarkTagService : IBookmarkTagService
+  public class BookmarkTagService : LoggedService<BookmarkTagService>, IBookmarkTagService
   {
     /// <summary>
     /// The collection of <see cref="BookmarkTag"/> from the database.
@@ -19,8 +20,8 @@
     /// Initializes a new instance of the <see cref="BookmarkTagService"/> class.
     /// </summary>
     /// <param name="config">The configuration used.</param>
-    /// <pa
-    public BookmarkTagService(IConfiguration config)
+    /// <param name="logger">The logger used.</param>
+    public BookmarkTagService(ILogger<BookmarkTagService> logger, IConfiguration config) : base(logger)
     {
       MongoClient client = new MongoClient(config.GetConnectionString("NgordatnetDb"));
       IMongoDatabase database = client.GetDatabase("NgordatnetDb");
