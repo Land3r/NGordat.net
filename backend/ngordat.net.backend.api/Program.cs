@@ -18,8 +18,14 @@
     /// <param name="args">The args passed to the application.</param>
     public static void Main(string[] args)
     {
+      string nlogConfig = string.Empty;
+#if DEBUG
+      nlogConfig = "nlog.Development.config";
+#else
+      nlogConfig = "nlog.Release.config";
+#endif
       // Setup logger
-      var logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
+      var logger = NLogBuilder.ConfigureNLog(nlogConfig).GetCurrentClassLogger();
       try
       {
         logger.Debug("Started program " + AppDomain.CurrentDomain.FriendlyName);
