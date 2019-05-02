@@ -11,6 +11,7 @@ Vue.use(VueRouter)
  */
 
 export default function (/* { store, ssrContext } */) {
+  // Router instance
   const Router = new VueRouter({
     scrollBehavior: () => ({ x: 0, y: 0 }),
     routes,
@@ -20,6 +21,11 @@ export default function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
+  })
+
+  // Security hook to generate client private/public keypair and provide it to the server.
+  Router.beforeEach((to, from, next) => {
+    next()
   })
 
   return Router

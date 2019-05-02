@@ -109,6 +109,7 @@
           .AllowAnyOrigin()
           .AllowAnyMethod()
           .AllowAnyHeader()
+          .AllowCredentials()
       );
 
       // Add sessions

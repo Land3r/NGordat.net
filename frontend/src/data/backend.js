@@ -8,7 +8,8 @@ export const baseUrl = process.env.BACKEND_BASE_URL + process.env.BACKEND_API_PR
  */
 export const API = {
   USER: 'users',
-  AUTH: 'auth'
+  AUTH: 'auth',
+  SECURITY: 'security'
 }
 
 /**

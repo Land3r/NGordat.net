@@ -1,5 +1,6 @@
 <template>
   <q-layout view="hHh lpR fFf">
+    <SecurityProvider />
     <q-header elevated class="header">
       <q-toolbar>
         <q-toolbar-title>
@@ -20,10 +21,14 @@
 
 <script>
 import { mapGetters, mapActions, mapState } from 'vuex'
+import SecurityProvider from 'components/security/SecurityProvider'
 
 export default {
   name: 'EmptyLayout',
-  data () {
+  components: {
+    SecurityProvider
+  },
+  data: function () {
     return {
     }
   },

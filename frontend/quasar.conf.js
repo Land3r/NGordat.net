@@ -54,6 +54,7 @@ module.exports = function (ctx) {
         'QCardSection',
         'QCardActions',
         // Items
+        'QMenu',
         'QList',
         'QItem',
         'QItemSection',
