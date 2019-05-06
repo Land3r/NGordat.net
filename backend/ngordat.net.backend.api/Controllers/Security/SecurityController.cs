@@ -42,19 +42,20 @@
     [HttpPost()]
     public IActionResult Post([FromBody] PublicKey clientPublicKey)
     {
+      // Get public key.
+      byte[] clientPublicKeyBytes = Encoding.UTF8.GetBytes(clientPublicKey.Key);
+      //byte[] clientPublicKeyBytes = Convert.FromBase64String(clientPublicKey.Key);
+
       // Generate a new Private/Public keypair for the user session.
-      (RSAParameters serverPrivateKey, RSAParameters serverPublicKey) = SecurityProvider.GeneratePrivatePublicPair();
-      // Converts to string
-      string serverPrivateStringKey = SecurityProvider.KeyToString(serverPrivateKey);
-      string serverPublicStringKey = SecurityProvider.KeyToString(serverPublicKey);
+      (byte[] serverPrivateKey, byte[] serverPublicKey) = SecurityProvider.GeneratePrivatePublicPair();
 
       // Store server private key, and client public key in user session
-      HttpContext.Session.Set(SessionSecurityConsts.CLIENT_PUBLIC_KEY, Encoding.Unicode.GetBytes(clientPublicKey.Key));
-      HttpContext.Session.Set(SessionSecurityConsts.SERVER_PRIVATE_KEY, Encoding.Unicode.GetBytes(serverPrivateStringKey));
-      HttpContext.Session.Set(SessionSecurityConsts.SERVER_PUBLIC_KEY, Encoding.Unicode.GetBytes(serverPublicStringKey));
+      HttpContext.Session.Set(SessionSecurityConsts.CLIENT_PUBLIC_KEY, clientPublicKeyBytes);
+      HttpContext.Session.Set(SessionSecurityConsts.SERVER_PRIVATE_KEY, serverPrivateKey);
+      HttpContext.Session.Set(SessionSecurityConsts.SERVER_PUBLIC_KEY, serverPublicKey);
 
       // Return server's public key, encrypted with client's public key.
-      string cipheredPubKey = SecurityProvider.Encrypt(clientPublicKey.Key, serverPublicStringKey);
+      string cipheredPubKey = SecurityProvider.Encrypt(serverPublicKey, clientPublicKeyBytes);
       return Ok(cipheredPubKey);
     }
   }

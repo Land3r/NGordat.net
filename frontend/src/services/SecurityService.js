@@ -11,7 +11,7 @@ const endpoints = {
  */
 export default class SecurityService {
   doSendPublicKey (key) {
-    console.log(key)
+    // const keyBase64 = key.toString('base64')
     const requestOptions = {
       method: 'post',
       url: getApiEndpoint(API.SECURITY + endpoints.DEFAULT),
