@@ -14,7 +14,6 @@
 
 <script>
 import AppTransition from 'components/common/presentation/Transition'
-import { NotifyError, NotifySuccess } from 'helpers/notify'
 
 import CreateAccountForm from 'components/form/login/CreateAccountForm'
 import UserService from 'services/UserService'
@@ -28,22 +27,8 @@ export default {
   methods: {
     doCreateAccount: function (user) {
       const service = new UserService()
-      service.create(user).then((response) => {
-        // User creation success
-        this.$q.notify({
-          ...NotifySuccess,
-          message: this.$t('createaccountpage.success.createsuccess')
-        })
-        this.$router.push('/login')
-      }).catch((error) => {
-        if (error) {
-          // User creation failure
-          this.$q.notify({
-            ...NotifyError,
-            message: this.$t('createaccountpage.error.createfailure')
-          })
-        }
-      })
+      const response = service.create(identity.email)
+      console.log(response)
     }
   }
 }
