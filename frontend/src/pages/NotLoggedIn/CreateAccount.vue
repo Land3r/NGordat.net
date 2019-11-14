@@ -27,7 +27,7 @@ export default {
   methods: {
     doCreateAccount: function (user) {
       const service = new UserService()
-      const response = service.create(identity.email)
+      const response = service.create(user.email)
       console.log(response)
     }
   }
